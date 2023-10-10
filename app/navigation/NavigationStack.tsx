@@ -11,6 +11,8 @@ import ForgotPassword from 'app/screens/ForgotPassword';
 import ThemeController from '../components/ThemeController';
 import { StatusBar } from 'react-native';
 import { useStore } from '../store';
+import Signup from 'app/screens/Signup';
+import CreateName from 'app/screens/CreateName';
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -28,12 +30,17 @@ const AuthNavigator = () => {
       <Stack.Screen
         name="Login"
         component={Login}
-        // options={{
-        //   // When logging out, a pop animation feels intuitive
-        //   // You can remove this if you want the default 'push' animation
-        //   animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-        //   headerRight: () => <ThemeController />,
-        // }}
+
+      />
+       <Stack.Screen
+        name="Signup"
+        component={Signup}
+
+      />
+       <Stack.Screen
+        name="CreateName"
+        component={CreateName}
+
       />
       <Stack.Screen
         name="ForgotPassword"

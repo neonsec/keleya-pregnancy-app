@@ -15,14 +15,14 @@ import { } from 'react-native-gesture-handler';
 import Button from 'app/components/Button';
 
 
-const Login: React.FC = () => {
+const Signup: React.FC = () => {
   const setIsLoggedIn = useStore(state => state.setIsLoggedIn);
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const onLogin = () => {
     setIsLoggedIn(true);
   };
-  const ClickSignUp = () => NavigationService.navigate('Signup');
+  const ClickCreateName = () => NavigationService.navigate('CreateName');
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -70,7 +70,7 @@ const Login: React.FC = () => {
       </ImageBackground>
 
       <View style={styles.bodyText}>
-        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center' }} >Welcome back!</Text>
+        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center', padding:4, textAlign: 'center' }} >Add your details below to set up an account</Text>
 
         <TextInput
           mode='flat'
@@ -101,8 +101,8 @@ const Login: React.FC = () => {
           Login
         </Button> */}
         <View style={styles.spacing}>
-          <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickSignUp}>
-            <Text variant="titleLarge" style={{ color: 'white' }} >Log in </Text>
+          <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickCreateName}>
+            <Text variant="titleLarge" style={{ color: 'white' }} >Create account </Text>
           </Button>
         </View>
 
@@ -223,4 +223,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default Signup;

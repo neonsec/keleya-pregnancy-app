@@ -15,18 +15,18 @@ import { } from 'react-native-gesture-handler';
 import Button from 'app/components/Button';
 
 
-const Login: React.FC = () => {
+const CreateName: React.FC = () => {
   const setIsLoggedIn = useStore(state => state.setIsLoggedIn);
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const onLogin = () => {
     setIsLoggedIn(true);
   };
-  const ClickSignUp = () => NavigationService.navigate('Signup');
+  const onForgot = () => NavigationService.navigate('ForgotPassword');
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../../assets/authentication-background-image.jpg')}
+        source={require('../../assets/name-background.jpg')}
         style={styles.headerBackground}>
         <TouchableWithoutFeedback onPress={() => console.log('Pressed')}>
           <View style={styles.backBtn}>
@@ -70,11 +70,11 @@ const Login: React.FC = () => {
       </ImageBackground>
 
       <View style={styles.bodyText}>
-        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center' }} >Welcome back!</Text>
+        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center', padding:4, textAlign: 'center' }} >It's great that you're here! First things first, what should we call you?</Text>
 
         <TextInput
           mode='flat'
-          label="Email"
+          label="Your Name"
           returnKeyType="next"
           value={email.value}
           style={{ backgroundColor: 'white', }}
@@ -85,24 +85,12 @@ const Login: React.FC = () => {
           keyboardType="email-address"
         />
 
-        <TextInput
-          mode='flat'
-          label="Password"
-          returnKeyType="done"
-          style={{ backgroundColor: 'white' }}
-          value={password.value}
-          onChangeText={text => setPassword({ value: text, error: '' })}
-          error={!!password.error}
-          secureTextEntry
-        />
+       
 
-        {/* <Button mode="contained"
-          style={{ marginTop: 30, elevation: 0, borderRadius:8 }}  textColor='white' buttonColor='#69c0ba' onPress={() => console.log('say')}>
-          Login
-        </Button> */}
+
         <View style={styles.spacing}>
-          <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickSignUp}>
-            <Text variant="titleLarge" style={{ color: 'white' }} >Log in </Text>
+          <Button isFullWidth backgroundColor='#69c0ba' onPress={() => console.log('say')}>
+            <Text variant="titleLarge" style={{ color: 'white' }} >Continue </Text>
           </Button>
         </View>
 
@@ -138,7 +126,7 @@ const styles = StyleSheet.create({
   },
   headerBackground: {
     width: '100%',
-    height: 300,
+    height: 400,
   },
   backBtn: {
     // height: 80,
@@ -223,4 +211,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default CreateName;
