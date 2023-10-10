@@ -1,45 +1,28 @@
 import React, { useState } from 'react';
 import {
-  View, Image,
+  View,
   StyleSheet,
   ImageBackground,
   TouchableWithoutFeedback,
-  ScrollView,
 } from 'react-native';
-import { Text, IconButton, MD3Colors, TextInput } from 'react-native-paper';
+import { Text, IconButton } from 'react-native-paper';
 
 // import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
-import { useStore } from 'app/store';
 import { } from 'react-native-gesture-handler';
 import DatePicker from 'react-native-date-picker'
-import RNPickerSelect from 'react-native-picker-select';
 
 import Button from 'app/components/Button';
 
 
-const BabyDue: React.FC = () => {
-  const setIsLoggedIn = useStore(state => state.setIsLoggedIn);
-  const [email, setEmail] = useState({ value: '', error: '' });
-  const [password, setPassword] = useState({ value: '', error: '' });
+const DueScreen: React.FC = () => {
+
   const [date, setDate] = useState(new Date())
   const [open, setOpen] = useState(false)
- 
-  const ref = React.useRef();
-  const [index, setIndex] = React.useState(0);
-  const onValueChange = (data, selectedIndex) => {
-    setIndex(selectedIndex);
-  };
-
-  console.log(date)
-
-  const onLogin = () => {
-    setIsLoggedIn(true);
-  };
 
 
-  
-  const onForgot = () => NavigationService.navigate('ForgotPassword');
+
+  const ClickWorkout = () => NavigationService.navigate('Workout');
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -47,62 +30,21 @@ const BabyDue: React.FC = () => {
         style={styles.headerBackground}>
         <TouchableWithoutFeedback onPress={() => console.log('Pressed')}>
           <View style={styles.backBtn}>
-            {/* <Icon
-              name="caret-back-outline"
-              style={{color: '#ccc', fontSize: 25}}
-            /> */}
             <IconButton
               icon="arrow-left-bold"
               iconColor="black"
               size={30}
-              onPress={() => console.log('Pressed')}
+              onPress={() => NavigationService.goBack()}
             />
           </View>
         </TouchableWithoutFeedback>
 
-
-        {/* <View style={styles.placeName}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <IconButton
-              icon="camera"
-              iconColor="black"
-              size={20}
-              onPress={() => console.log('Pressed')}
-            />
-            <Text style={styles.ratingText}> Texttt </Text>
-          </View>
-          <Text style={styles.destinationName}>
-            sdfdxgchfvgjbhk ghvjbknk.m,/.dfcgfcghmvjhmb,
-          </Text>
-        </View>
-
-        <View style={styles.heartView}>
-          <IconButton
-            icon="camera"
-            iconColor={MD3Colors.error50}
-            size={20}
-            onPress={() => console.log('Pressed')}
-          />
-        </View> */}
       </ImageBackground>
 
       <View style={styles.bodyText} >
-        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center', padding: 4, textAlign: 'center' }} >When is your baby due, Sam?</Text>
+        <Text variant="titleLarge" style={{ color: "#4a4a4a", alignSelf: 'center', padding: 4, textAlign: 'center' }} >When is your baby due, Sam?</Text>
 
-        {/* <TextInput
-          mode='flat'
-          label="Your Name"
-          returnKeyType="next"
-          value={email.value}
-          style={{ backgroundColor: 'white', }}
-          onChangeText={text => setEmail({ value: text, error: '' })}
-          error={!!email.error}
-          autoCapitalize="none"
-          textContentType="emailAddress"
-          keyboardType="email-address"
-        /> */}
-
-        <Button  style={{width:150 , height:40, alignSelf:'center', marginTop: 20}} backgroundColor='#EFF0F2' onPress={() => setOpen(true)} >
+        <Button style={{ width: 150, height: 40, alignSelf: 'center', marginTop: 20 }} backgroundColor='#EFF0F2' onPress={() => setOpen(true)} >
           <Text variant="labelSmall" style={{ color: '#3365FF' }} >{date.toDateString()} </Text>
         </Button>
         <DatePicker
@@ -119,34 +61,15 @@ const BabyDue: React.FC = () => {
           }}
         />
 
-   
-
         <View style={styles.spacing}>
-          <Button isFullWidth backgroundColor='#69c0ba' onPress={() => console.log('say')}>
+          <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickWorkout}>
             <Text variant="titleLarge" style={{ color: 'white' }} > Continue </Text>
           </Button>
         </View>
 
-        {/* <Button icon="camera" onPress={() => console.log('say')}
-                mode="contained" textColor="black" style={{ backgroundColor: '#69c0ba', elevation: 0, }}>
-                Project
-              </Button> */}
 
 
       </View>
-      {/* <View style={styles.container}>
-        <Text style={styles.login}>Login Status </Text>
-        <Button icon="login" mode="outlined" onPress={onLogin}>
-          Login
-        </Button>
-        <Button
-          mode="text"
-          style={styles.forgot}
-          labelStyle={styles.labelStyle}
-          onPress={onForgot}>
-          Forgot Password
-        </Button>
-      </View> */}
     </View>
   );
 };
@@ -244,4 +167,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BabyDue;
+export default DueScreen;

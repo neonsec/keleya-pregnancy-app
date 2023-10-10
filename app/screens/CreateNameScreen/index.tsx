@@ -15,18 +15,15 @@ import { } from 'react-native-gesture-handler';
 import Button from 'app/components/Button';
 
 
-const Login: React.FC = () => {
-  const setIsLoggedIn = useStore(state => state.setIsLoggedIn);
-  const [email, setEmail] = useState({ value: '', error: '' });
-  const [password, setPassword] = useState({ value: '', error: '' });
-  const onLogin = () => {
-    setIsLoggedIn(true);
-  };
-  const ClickSignUp = () => NavigationService.navigate('Signup');
+const CreateNameScreen: React.FC = () => {
+
+  const [name, setName] = useState({ value: '', error: '' });
+  
+  const ClickBabyDue = () => NavigationService.navigate('BabyDue');
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../../assets/authentication-background-image.jpg')}
+        source={require('../../assets/name-background.jpg')}
         style={styles.headerBackground}>
         <TouchableWithoutFeedback onPress={() => console.log('Pressed')}>
           <View style={styles.backBtn}>
@@ -38,94 +35,41 @@ const Login: React.FC = () => {
               icon="arrow-left-bold"
               iconColor="black"
               size={30}
-              onPress={() => console.log('Pressed')}
+              onPress={() => NavigationService.goBack()}
             />
           </View>
         </TouchableWithoutFeedback>
 
-
-        {/* <View style={styles.placeName}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <IconButton
-              icon="camera"
-              iconColor="black"
-              size={20}
-              onPress={() => console.log('Pressed')}
-            />
-            <Text style={styles.ratingText}> Texttt </Text>
-          </View>
-          <Text style={styles.destinationName}>
-            sdfdxgchfvgjbhk ghvjbknk.m,/.dfcgfcghmvjhmb,
-          </Text>
-        </View>
-
-        <View style={styles.heartView}>
-          <IconButton
-            icon="camera"
-            iconColor={MD3Colors.error50}
-            size={20}
-            onPress={() => console.log('Pressed')}
-          />
-        </View> */}
       </ImageBackground>
 
       <View style={styles.bodyText}>
-        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center' }} >Welcome back!</Text>
+        <Text variant="titleLarge" style={{ color: "#4a4a4a", alignSelf: 'center', padding: 4, textAlign: 'center' }} >It's great that you're here! First things first, what should we call you?</Text>
 
         <TextInput
           mode='flat'
-          label="Email"
+          label="Your Name"
           returnKeyType="next"
-          value={email.value}
+          value={name.value}
           style={{ backgroundColor: 'white', }}
-          onChangeText={text => setEmail({ value: text, error: '' })}
-          error={!!email.error}
+          onChangeText={text => setName({ value: text, error: '' })}
+          error={!!name.error}
           autoCapitalize="none"
           textContentType="emailAddress"
           keyboardType="email-address"
         />
 
-        <TextInput
-          mode='flat'
-          label="Password"
-          returnKeyType="done"
-          style={{ backgroundColor: 'white' }}
-          value={password.value}
-          onChangeText={text => setPassword({ value: text, error: '' })}
-          error={!!password.error}
-          secureTextEntry
-        />
 
-        {/* <Button mode="contained"
-          style={{ marginTop: 30, elevation: 0, borderRadius:8 }}  textColor='white' buttonColor='#69c0ba' onPress={() => console.log('say')}>
-          Login
-        </Button> */}
+
+
         <View style={styles.spacing}>
-          <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickSignUp}>
-            <Text variant="titleLarge" style={{ color: 'white' }} >Log in </Text>
+          <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickBabyDue}>
+            <Text variant="titleLarge" style={{ color: 'white' }} >Continue </Text>
           </Button>
         </View>
 
-        {/* <Button icon="camera" onPress={() => console.log('say')}
-                mode="contained" textColor="black" style={{ backgroundColor: '#69c0ba', elevation: 0, }}>
-                Project
-              </Button> */}
 
 
       </View>
-      {/* <View style={styles.container}>
-        <Text style={styles.login}>Login Status </Text>
-        <Button icon="login" mode="outlined" onPress={onLogin}>
-          Login
-        </Button>
-        <Button
-          mode="text"
-          style={styles.forgot}
-          labelStyle={styles.labelStyle}
-          onPress={onForgot}>
-          Forgot Password
-        </Button>
-      </View> */}
     </View>
   );
 };
@@ -138,7 +82,7 @@ const styles = StyleSheet.create({
   },
   headerBackground: {
     width: '100%',
-    height: 300,
+    height: 400,
   },
   backBtn: {
     // height: 80,
@@ -223,4 +167,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default CreateNameScreen;

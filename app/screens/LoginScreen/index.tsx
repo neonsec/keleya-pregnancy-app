@@ -15,14 +15,11 @@ import { } from 'react-native-gesture-handler';
 import Button from 'app/components/Button';
 
 
-const Signup: React.FC = () => {
-  const setIsLoggedIn = useStore(state => state.setIsLoggedIn);
+const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
-  const onLogin = () => {
-    setIsLoggedIn(true);
-  };
-  const ClickCreateName = () => NavigationService.navigate('CreateName');
+
+  const ClickSignUp = () => NavigationService.navigate('Signup');
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -30,47 +27,19 @@ const Signup: React.FC = () => {
         style={styles.headerBackground}>
         <TouchableWithoutFeedback onPress={() => console.log('Pressed')}>
           <View style={styles.backBtn}>
-            {/* <Icon
-              name="caret-back-outline"
-              style={{color: '#ccc', fontSize: 25}}
-            /> */}
             <IconButton
               icon="arrow-left-bold"
               iconColor="black"
               size={30}
-              onPress={() => console.log('Pressed')}
+              onPress={() => NavigationService.goBack()}
             />
           </View>
         </TouchableWithoutFeedback>
 
-
-        {/* <View style={styles.placeName}>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <IconButton
-              icon="camera"
-              iconColor="black"
-              size={20}
-              onPress={() => console.log('Pressed')}
-            />
-            <Text style={styles.ratingText}> Texttt </Text>
-          </View>
-          <Text style={styles.destinationName}>
-            sdfdxgchfvgjbhk ghvjbknk.m,/.dfcgfcghmvjhmb,
-          </Text>
-        </View>
-
-        <View style={styles.heartView}>
-          <IconButton
-            icon="camera"
-            iconColor={MD3Colors.error50}
-            size={20}
-            onPress={() => console.log('Pressed')}
-          />
-        </View> */}
       </ImageBackground>
 
       <View style={styles.bodyText}>
-        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center', padding:4, textAlign: 'center' }} >Add your details below to set up an account</Text>
+        <Text variant="titleLarge" style={{ color: "#4a4a4a", alignSelf: 'center' }} >Welcome back!</Text>
 
         <TextInput
           mode='flat'
@@ -96,36 +65,17 @@ const Signup: React.FC = () => {
           secureTextEntry
         />
 
-        {/* <Button mode="contained"
-          style={{ marginTop: 30, elevation: 0, borderRadius:8 }}  textColor='white' buttonColor='#69c0ba' onPress={() => console.log('say')}>
-          Login
-        </Button> */}
         <View style={styles.spacing}>
-          <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickCreateName}>
-            <Text variant="titleLarge" style={{ color: 'white' }} >Create account </Text>
+        <Text style={styles.ratingText}>
+            Have you fotgotten your password?
+         </Text>
+          <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickSignUp}>
+            <Text variant="titleLarge" style={{ color: 'white' }} >Log in </Text>
           </Button>
         </View>
 
-        {/* <Button icon="camera" onPress={() => console.log('say')}
-                mode="contained" textColor="black" style={{ backgroundColor: '#69c0ba', elevation: 0, }}>
-                Project
-              </Button> */}
-
 
       </View>
-      {/* <View style={styles.container}>
-        <Text style={styles.login}>Login Status </Text>
-        <Button icon="login" mode="outlined" onPress={onLogin}>
-          Login
-        </Button>
-        <Button
-          mode="text"
-          style={styles.forgot}
-          labelStyle={styles.labelStyle}
-          onPress={onForgot}>
-          Forgot Password
-        </Button>
-      </View> */}
     </View>
   );
 };
@@ -156,10 +106,10 @@ const styles = StyleSheet.create({
   },
   ratingText: {
     fontSize: 16,
-    color: '#fff',
-    fontWeight: 'bold',
+    color: '#9b9b9b',
     marginHorizontal: 10,
     marginVertical: 10,
+    textAlign:'center'
   },
   destinationName: {
     fontSize: 27,
@@ -223,4 +173,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Signup;
+export default LoginScreen;

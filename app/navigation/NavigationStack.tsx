@@ -4,16 +4,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { navigationRef } from './NavigationService';
 
-import Login from 'app/screens/Login';
-import Home from 'app/screens/Home';
-import ForgotPassword from 'app/screens/ForgotPassword';
 
 import ThemeController from '../components/ThemeController';
-import { StatusBar } from 'react-native';
 import { useStore } from '../store';
-import Signup from 'app/screens/Signup';
-import CreateName from 'app/screens/CreateName';
-import BabyDue from 'app/screens/BabyDue';
+import OnboardinScreen from 'app/screens/OnboardingScreen';
+import NotificationScreen from 'app/screens/NotificationScreen';
+import DueScreen from 'app/screens/DueScreen';
+import CreateNameScreen from 'app/screens/CreateNameScreen';
+import LoginScreen from 'app/screens/LoginScreen';
+import WorkoutScreen from 'app/screens/WorkoutScreen';
+import SignupScreen from 'app/screens/SignupScreen';
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -28,67 +28,58 @@ const AuthNavigator = () => {
 
   return (
     <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+       <Stack.Screen
+        name="Onboarding"
+        component={OnboardinScreen}
+
+      />
       <Stack.Screen
         name="Login"
-        component={Login}
+        component={LoginScreen}
 
       />
        <Stack.Screen
         name="Signup"
-        component={Signup}
+        component={SignupScreen}
 
       />
        <Stack.Screen
         name="CreateName"
-        component={CreateName}
+        component={CreateNameScreen}
       />
       <Stack.Screen
         name="BabyDue"
-        component={BabyDue}
+        component={DueScreen}
       />
-      <Stack.Screen
-        name="ForgotPassword"
-        component={ForgotPassword}
-        options={{
-          // When logging out, a pop animation feels intuitive
-          // You can remove this if you want the default 'push' animation
-          animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
-          headerRight: () => <ThemeController />,
-        }}
+       <Stack.Screen
+        name="Workout"
+        component={WorkoutScreen}
       />
+        <Stack.Screen
+        name="Notification"
+        component={NotificationScreen}
+      />
+
     </AuthStack.Navigator>
   );
 };
 
-const LoggedInNavigator = () => (
-  <LoggedInStack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Home" component={Home} />
-  </LoggedInStack.Navigator>
-);
+
 
 const App: React.FC<IProps> = (props: IProps) => {
-  const { theme } = props;
-  const isLoggedIn = useStore(state => state.isLoggedIn);
-
+  
   return (
     <NavigationContainer ref={navigationRef} >
-      {/* <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} /> */}
 
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {isLoggedIn ? (
-          <Stack.Screen name="HomeStack" component={LoggedInNavigator} />
-        ) : (
+       
           <Stack.Screen
             name="LoginStack"
             component={AuthNavigator}
             options={{
-              // When logging out, a pop animation feels intuitive
-              // You can remove this if you want the default 'push' animation
-              animationTypeForReplace: isLoggedIn ? 'push' : 'pop',
               headerRight: () => <ThemeController />,
             }}
           />
-        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
