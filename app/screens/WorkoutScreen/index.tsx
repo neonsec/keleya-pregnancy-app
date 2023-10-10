@@ -3,9 +3,9 @@ import {
   View, Image,
   StyleSheet,
   ImageBackground,
-  
+
 } from 'react-native';
-import {  Text, IconButton } from 'react-native-paper';
+import { Text, IconButton } from 'react-native-paper';
 
 // import styles from './styles';
 import NavigationService from 'app/navigation/NavigationService';
@@ -14,21 +14,28 @@ import Button from 'app/components/Button';
 
 
 const WorkoutScreen: React.FC = () => {
-  
+
   const ClickNotification = () => NavigationService.navigate('Notification');
   return (
     <View style={styles.container}>
       <ImageBackground
         source={require('../../assets/workout-goal-background-image.jpg')}
         style={styles.headerBackground}>
-          <View style={styles.backBtn}>
-            <IconButton
-              icon="arrow-left-bold"
-              iconColor="black"
-              size={30}
-              onPress={()=> NavigationService.goBack()}
-            />
-          </View>
+        <View style={styles.backBtn}>
+          <IconButton
+            icon="arrow-left-bold"
+            iconColor="black"
+            size={30}
+            onPress={() => NavigationService.goBack()}
+          />
+        </View>
+
+        <View style={styles.spacing}>
+
+          <Text style={styles.destinationName}>
+            How many times a week do you want to be active ?
+          </Text>
+        </View>
 
       </ImageBackground>
 
@@ -76,9 +83,13 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   destinationName: {
-    fontSize: 27,
-    color: '#fff',
-    fontWeight: 'bold',
+    fontSize: 24,
+    padding: 6,
+    paddingTop:30,
+    paddingLeft: 40,
+    paddingRight: 40,
+    color: '#4a4a4a',
+    textAlign: 'center'
   },
   heartView: {
     position: 'absolute',
