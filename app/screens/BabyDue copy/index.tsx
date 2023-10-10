@@ -15,18 +15,18 @@ import { } from 'react-native-gesture-handler';
 import Button from 'app/components/Button';
 
 
-const CreateName: React.FC = () => {
+const BabyDue: React.FC = () => {
   const setIsLoggedIn = useStore(state => state.setIsLoggedIn);
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const onLogin = () => {
     setIsLoggedIn(true);
   };
-  const ClickBabyDue = () => NavigationService.navigate('BabyDue');
+  const onForgot = () => NavigationService.navigate('ForgotPassword');
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../../assets/name-background.jpg')}
+        source={require('../../assets/due-date-background-image.jpg')}
         style={styles.headerBackground}>
         <TouchableWithoutFeedback onPress={() => console.log('Pressed')}>
           <View style={styles.backBtn}>
@@ -70,7 +70,7 @@ const CreateName: React.FC = () => {
       </ImageBackground>
 
       <View style={styles.bodyText}>
-        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center', padding:4, textAlign: 'center' }} >It's great that you're here! First things first, what should we call you?</Text>
+        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center', padding:4, textAlign: 'center' }} >When is your baby due, Sam?</Text>
 
         <TextInput
           mode='flat'
@@ -89,7 +89,7 @@ const CreateName: React.FC = () => {
 
 
         <View style={styles.spacing}>
-          <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickBabyDue}>
+          <Button isFullWidth backgroundColor='#69c0ba' onPress={() => console.log('say')}>
             <Text variant="titleLarge" style={{ color: 'white' }} >Continue </Text>
           </Button>
         </View>
@@ -211,4 +211,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateName;
+export default BabyDue;

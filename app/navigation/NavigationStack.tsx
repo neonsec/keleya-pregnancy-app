@@ -13,6 +13,7 @@ import { StatusBar } from 'react-native';
 import { useStore } from '../store';
 import Signup from 'app/screens/Signup';
 import CreateName from 'app/screens/CreateName';
+import BabyDue from 'app/screens/BabyDue';
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -40,7 +41,10 @@ const AuthNavigator = () => {
        <Stack.Screen
         name="CreateName"
         component={CreateName}
-
+      />
+      <Stack.Screen
+        name="BabyDue"
+        component={BabyDue}
       />
       <Stack.Screen
         name="ForgotPassword"

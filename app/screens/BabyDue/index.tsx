@@ -12,21 +12,38 @@ import { Text, IconButton, MD3Colors, TextInput } from 'react-native-paper';
 import NavigationService from 'app/navigation/NavigationService';
 import { useStore } from 'app/store';
 import { } from 'react-native-gesture-handler';
+import DatePicker from 'react-native-date-picker'
+import RNPickerSelect from 'react-native-picker-select';
+
 import Button from 'app/components/Button';
 
 
-const CreateName: React.FC = () => {
+const BabyDue: React.FC = () => {
   const setIsLoggedIn = useStore(state => state.setIsLoggedIn);
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
+  const [date, setDate] = useState(new Date())
+  const [open, setOpen] = useState(false)
+ 
+  const ref = React.useRef();
+  const [index, setIndex] = React.useState(0);
+  const onValueChange = (data, selectedIndex) => {
+    setIndex(selectedIndex);
+  };
+
+  console.log(date)
+
   const onLogin = () => {
     setIsLoggedIn(true);
   };
-  const ClickBabyDue = () => NavigationService.navigate('BabyDue');
+
+
+  
+  const onForgot = () => NavigationService.navigate('ForgotPassword');
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../../assets/name-background.jpg')}
+        source={require('../../assets/due-date-background-image.jpg')}
         style={styles.headerBackground}>
         <TouchableWithoutFeedback onPress={() => console.log('Pressed')}>
           <View style={styles.backBtn}>
@@ -69,10 +86,10 @@ const CreateName: React.FC = () => {
         </View> */}
       </ImageBackground>
 
-      <View style={styles.bodyText}>
-        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center', padding:4, textAlign: 'center' }} >It's great that you're here! First things first, what should we call you?</Text>
+      <View style={styles.bodyText} >
+        <Text variant="titleLarge" style={{ color: "black", alignSelf: 'center', padding: 4, textAlign: 'center' }} >When is your baby due, Sam?</Text>
 
-        <TextInput
+        {/* <TextInput
           mode='flat'
           label="Your Name"
           returnKeyType="next"
@@ -83,14 +100,30 @@ const CreateName: React.FC = () => {
           autoCapitalize="none"
           textContentType="emailAddress"
           keyboardType="email-address"
+        /> */}
+
+        <Button  style={{width:150 , height:40, alignSelf:'center', marginTop: 20}} backgroundColor='#EFF0F2' onPress={() => setOpen(true)} >
+          <Text variant="labelSmall" style={{ color: '#3365FF' }} >{date.toDateString()} </Text>
+        </Button>
+        <DatePicker
+          modal
+          mode='date'
+          open={open}
+          date={date}
+          onConfirm={(date) => {
+            setOpen(false)
+            setDate(date)
+          }}
+          onCancel={() => {
+            setOpen(false)
+          }}
         />
 
-       
-
+   
 
         <View style={styles.spacing}>
-          <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickBabyDue}>
-            <Text variant="titleLarge" style={{ color: 'white' }} >Continue </Text>
+          <Button isFullWidth backgroundColor='#69c0ba' onPress={() => console.log('say')}>
+            <Text variant="titleLarge" style={{ color: 'white' }} > Continue </Text>
           </Button>
         </View>
 
@@ -140,7 +173,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   spacing: {
-    marginTop: 30
+    marginTop: 80
   },
   ratingText: {
     fontSize: 16,
@@ -211,4 +244,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CreateName;
+export default BabyDue;

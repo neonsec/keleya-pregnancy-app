@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-community/async-storage';
-import create from 'zustand';
+import {create} from 'zustand';
 import { persist } from 'zustand/middleware';
 import { createLoginSlice, ILoginSlice } from './createLoginSlice';
 import { createThemeSlice, IThemeSlice } from './createThemeSlice';
