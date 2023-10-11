@@ -13,9 +13,13 @@ import NavigationService from 'app/navigation/NavigationService';
 import { useStore } from 'app/store';
 import { } from 'react-native-gesture-handler';
 import Button from 'app/components/Button';
+import { useTranslation } from 'react-i18next';
+import '../../i18n/index';
 
 
 const LoginScreen: React.FC = () => {
+  const { t, i18n } = useTranslation(); // destructure i18n here
+
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
 
@@ -39,8 +43,7 @@ const LoginScreen: React.FC = () => {
       </ImageBackground>
 
       <View style={styles.bodyText}>
-        <Text variant="titleLarge" style={{ color: "#4a4a4a", alignSelf: 'center' }} >Welcome back!</Text>
-
+        <Text variant="titleLarge" style={{ color: "#4a4a4a", alignSelf: 'center' }} > {t('translateApp.welcome')}</Text>
         <TextInput
           mode='flat'
           label="Email"
@@ -66,11 +69,11 @@ const LoginScreen: React.FC = () => {
         />
 
         <View style={styles.spacing}>
-        <Text style={styles.ratingText}>
-            Have you fotgotten your password?
-         </Text>
+          <Text style={styles.ratingText}>
+            {t('translateApp.forgotten')}
+          </Text>
           <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickSignUp}>
-            <Text variant="titleLarge" style={{ color: 'white' }} >Log in </Text>
+            <Text variant="titleLarge" style={{ color: 'white' }} >{t('translateApp.login')} </Text>
           </Button>
         </View>
 
@@ -109,11 +112,11 @@ const styles = StyleSheet.create({
     color: '#9b9b9b',
     marginHorizontal: 10,
     marginVertical: 10,
-    textAlign:'center'
+    textAlign: 'center'
   },
   destinationName: {
     fontSize: 27,
-    color: '#fff',
+    color: 'black',
     fontWeight: 'bold',
   },
   heartView: {

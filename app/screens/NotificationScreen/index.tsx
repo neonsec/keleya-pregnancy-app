@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    View, 
+    View,
     StyleSheet,
     ImageBackground,
 
@@ -15,7 +15,7 @@ import Button from 'app/components/Button';
 
 
 const NotificationScreen: React.FC = () => {
-    
+
     const ClickLogin = () => NavigationService.navigate('Login');
     return (
         <View style={styles.container}>
@@ -33,7 +33,7 @@ const NotificationScreen: React.FC = () => {
                             size={50}
                             onPress={() => console.log('Pressed')}
                         />
-                        
+
                     </View>
                     <Text style={styles.destinationName}>
                         Get notifications to boost your motivation
@@ -41,7 +41,9 @@ const NotificationScreen: React.FC = () => {
                 </View>
 
                 <View style={styles.heartView}>
-
+                    <Text style={styles.ratingText}>
+                        Skip
+                    </Text>
 
                     <View style={styles.spacing}>
                         <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickLogin}>
@@ -86,10 +88,10 @@ const styles = StyleSheet.create({
     },
     ratingText: {
         fontSize: 16,
-        color: '#fff',
-        fontWeight: 'bold',
+        color: '#4a4a4a',
         marginHorizontal: 10,
         marginVertical: 10,
+        textAlign:'center'
     },
     destinationName: {
         fontSize: 25,

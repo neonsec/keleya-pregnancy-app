@@ -1,0 +1,12 @@
+{
+    "translateApp": {
+      "title": "Für eine fitte und entspannte Schwangerschaft",
+      "getStarted" : "loslegen",
+      "orLogin":"Oder melden Sie sich an",
+      "welcome":"Willkommen zurück!",
+      "email":"Email",
+      "password":"Passwort",
+      "forgotten":"Hast du dein Passwort vergessen?",
+      "login":"Anmeldung"
+    }
+  }

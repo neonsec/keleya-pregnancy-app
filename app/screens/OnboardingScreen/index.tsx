@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     View, Image,
     StyleSheet,
@@ -13,9 +13,24 @@ import { IconButton, Text, } from 'react-native-paper';
 import NavigationService from 'app/navigation/NavigationService';
 import { } from 'react-native-gesture-handler';
 import Button from 'app/components/Button';
+import DropDownPicker from 'react-native-dropdown-picker';
+import { useTranslation } from 'react-i18next';
+import '../../i18n/index';
 
 
 const OnboardinScreen: React.FC = () => {
+    const { t, i18n } = useTranslation(); // destructure i18n here
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState('en');
+    const [items, setItems] = useState([
+        { label: '🇬🇧 ', value: 'en' },
+        { label: '🇩🇪', value: 'de' },
+    ]);
+
+    useEffect(() => {
+        i18n.changeLanguage(value);
+    }, [value]);
+
 
     const ClickLogin = () => NavigationService.navigate('Login');
     const ClickSignup = () => NavigationService.navigate('Signup');
@@ -25,9 +40,18 @@ const OnboardinScreen: React.FC = () => {
             <ImageBackground
                 source={require('../../assets/first-intro-image.png')}
                 style={styles.headerBackground}>
+                <View style={styles.backBtn}>
 
-
-
+                    <DropDownPicker
+                        open={open}
+                        value={value}
+                        items={items}
+                        setOpen={setOpen}
+                        setValue={setValue}
+                        setItems={setItems}
+                        style={{ width: 70, height: 30 }}
+                    />
+                </View>
                 <View style={styles.spacing}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', }}>
                         <Image
@@ -36,7 +60,7 @@ const OnboardinScreen: React.FC = () => {
                         />
                     </View>
                     <Text style={styles.destinationName}>
-                        For a fit and relaxed pregnancy
+                        {t('translateApp.title')}
                     </Text>
                 </View>
 
@@ -46,11 +70,11 @@ const OnboardinScreen: React.FC = () => {
                     <View style={styles.spacing}>
 
                         <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickSignup}>
-                            <Text variant="titleLarge" style={{ color: 'white' }} > Get started </Text>
+                            <Text variant="titleLarge" style={{ color: 'white' }} > {t('translateApp.getStarted')} </Text>
                         </Button>
                     </View>
                     <Text onPress={ClickLogin} style={styles.ratingText}>
-                        Or login
+                    {t('translateApp.orLogin')}
                     </Text>
                 </View>
             </ImageBackground>
@@ -70,7 +94,7 @@ const styles = StyleSheet.create({
     },
     backBtn: {
         position: 'absolute',
-        left: 30,
+        right: 30,
         top: 10,
         alignItems: 'center',
         justifyContent: 'center',
@@ -96,7 +120,7 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     destinationName: {
-        fontSize: 25,
+        fontSize: 22,
         padding: 4,
         paddingLeft: 40,
         paddingRight: 40,

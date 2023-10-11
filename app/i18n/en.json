@@ -1,0 +1,12 @@
+{
+    "translateApp": {
+      "title": "For a fit and relaxed pregnancy",
+      "getStarted" : "Get Started",
+      "orLogin":"Or Login",
+      "welcome":"Welcome back!",
+      "email":"Email",
+      "password":"Password",
+      "forgotten":"Have you forgotten your password?",
+      "login":"Log In"
+    }
+  }

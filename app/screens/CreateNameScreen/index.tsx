@@ -27,10 +27,6 @@ const CreateNameScreen: React.FC = () => {
         style={styles.headerBackground}>
         <TouchableWithoutFeedback onPress={() => console.log('Pressed')}>
           <View style={styles.backBtn}>
-            {/* <Icon
-              name="caret-back-outline"
-              style={{color: '#ccc', fontSize: 25}}
-            /> */}
             <IconButton
               icon="arrow-left-bold"
               iconColor="black"
