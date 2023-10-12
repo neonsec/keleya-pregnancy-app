@@ -12,7 +12,15 @@ const resources = {
   },
 };
 
-i18n.use(initReactI18next).init({
+const languageDetector = {
+    type: 'languageDetector',
+    async: true,
+    detect: cb => cb('en'),
+    init: () => {},
+    cacheUserLanguage: () => {},
+  };
+
+i18n.use(languageDetector).use(initReactI18next).init({
   resources,
   lng: 'zh',
   fallbackLng: 'en',
