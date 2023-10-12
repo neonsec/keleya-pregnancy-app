@@ -6373,6 +6373,16 @@ react-native-screens@^3.18.2:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-scroll-picker-wheel@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-scroll-picker-wheel/-/react-native-scroll-picker-wheel-1.0.2.tgz#e4103628c0800e9f26ad3f2c2e719f325959bf5b"
+  integrity sha512-owZ91GA2RZ9tO86f18L6F+4t1na3OAy7cu7YacZEtqGYK5WOu+DUek0ra4XXrLsx1t+sdDfS2iZvORLbzw+mGw==
+
+react-native-value-picker@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/react-native-value-picker/-/react-native-value-picker-0.1.4.tgz#019410023418b41fa53a0569d0830fc3fa5a7c14"
+  integrity sha512-jLYp13WX5JpCbmZhWF3UHRktiVDVYIYMEHQRLgXJCYTJVj89jAPGT1CVkFQFl78SKF4CuQoeeRzBbF5UesNrTA==
+
 react-native-vector-icons@^9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-9.2.0.tgz#3c0c82e95defd274d56363cbe8fead8d53167ebd"

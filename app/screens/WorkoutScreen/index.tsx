@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   View, Image,
   StyleSheet,
@@ -11,9 +11,40 @@ import { Text, IconButton } from 'react-native-paper';
 import NavigationService from 'app/navigation/NavigationService';
 import { } from 'react-native-gesture-handler';
 import Button from 'app/components/Button';
+import {ScrollPicker} from 'react-native-value-picker';
+
+
+export const MOCK_DATA = [
+  {
+    value: 1,
+    label: 'Once a week',
+  },
+  {
+    value: 2,
+    label: '2 times a week',
+  },
+  {
+    value: 3,
+    label: '3 times a week',
+  },{
+    value: 4,
+    label: '4 times a week',
+  },{
+    value: 5,
+    label: '5 times a week',
+  },{
+    value: 6,
+    label: '6 times a week',
+  },{
+    value: 7,
+    label: '7 times a week',
+  },
+];
 
 
 const WorkoutScreen: React.FC = () => {
+  const [pickedValue, setPickedValue] = useState(7);
+
 
   const ClickNotification = () => NavigationService.navigate('Notification');
   return (
@@ -40,6 +71,16 @@ const WorkoutScreen: React.FC = () => {
       </ImageBackground>
 
       <View style={styles.bodyText}>
+      <View style={styles.PickerContainer}>
+
+      <ScrollPicker
+          currentValue={pickedValue}
+          extraData={pickedValue}
+          list={MOCK_DATA}
+          style={styles.details}
+          onItemPress={setPickedValue}
+        />
+        </View>
         <View style={styles.spacing}>
           <Button isFullWidth backgroundColor='#69c0ba' onPress={ClickNotification}>
             <Text variant="titleLarge" style={{ color: 'white' }} >Continue </Text>
@@ -127,10 +168,11 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 
-  categoriesBackground: {
-    height: 170,
-    width: 170,
+  PickerContainer: {
+    height: 150,
+    width: 150,
     marginVertical: 5,
+    alignSelf:'center',
     alignItems: 'center',
     justifyContent: 'center',
   },

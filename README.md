@@ -5,11 +5,12 @@
 
 
 
+
+## Start your project
+
 ```sh
 npm install
 ```
-
-## Start your project
 
 ```sh
 npm start
